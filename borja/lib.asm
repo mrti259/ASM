@@ -115,15 +115,12 @@ countChars:
     cmp byte [rdi + rcx], 0
     jz .ret
     cmp byte [rdi + rcx], sil
-    jz .inc_count
+    jnz .next
+    inc eax
 
     .next:
     inc rcx
     jmp .loop
-
-    .inc_count:
-    inc eax
-    jmp .next
 
     .ret:
     ret
